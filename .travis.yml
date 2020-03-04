@@ -10,21 +10,19 @@ python:
   - "3.5"
   - "3.6"
   - "3.7"
-  - "3.7-dev"
-  - "3.8-dev"
-
-install:
-  - pip install coverage
-  - pip install pypack
-
-script:
-  # run tests with coverage
-  - coverage run tests/run_tests.py
-  - coverage report -m
+  - "3.8"
 
 jobs:
   include:
     - stage: test
+      install:
+        - pip install coverage
+        - pip install pypack
+      script:
+        # run tests with coverage
+        - coverage run tests/run_tests.py
+        - coverage report -m
+
     - stage: deploy
       python: 3.8
       script: echo "This is deploy!"
