@@ -21,13 +21,12 @@ script:
   # run tests with coverage
   - coverage run tests/run_tests.py
   - coverage report -m
-  # test distribution packaging
-  #- python -m pypack patch_ng.py
 
 jobs:
   include:
     - stage: test
     - stage: deploy
+      python: 3.8
       script: echo "This is deploy!"
 
       deploy:
