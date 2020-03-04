@@ -1,3 +1,8 @@
+stages:
+  - test
+  - name: deploy
+    #if: branch = master
+
 language: python
 python:
   - "2.7"
@@ -19,12 +24,18 @@ script:
   # test distribution packaging
   #- python -m pypack patch_ng.py
 
-deploy:
-  provider: pypi
-  user: "__token__"
-  password: "pypi-AgENdGVzdC5weXBpLm9yZwIkNDA0MjhhMjItZTQyOS00ZjFiLWI1NDItZGVjOGU5NWNiZGFmAAIleyJwZXJtaXNzaW9ucyI6ICJ1c2VyIiwgInZlcnNpb24iOiAxfQAABiDvri5oMJmYntqX2H3yJSS9PT8zDaG7dnfoc-JiEMHhyg"
-  server: https://test.pypi.org/legacy/
-  skip_existing: true
-  on:
-    tags: true
-    #branch: master
+jobs:
+  include:
+    - stage: test
+    - stage: deploy
+      script: echo "This is deploy!"
+
+      deploy:
+        provider: pypi
+        user: "__token__"
+        password: "pypi-AgENdGVzdC5weXBpLm9yZwIkNDA0MjhhMjItZTQyOS00ZjFiLWI1NDItZGVjOGU5NWNiZGFmAAIleyJwZXJtaXNzaW9ucyI6ICJ1c2VyIiwgInZlcnNpb24iOiAxfQAABiDvri5oMJmYntqX2H3yJSS9PT8zDaG7dnfoc-JiEMHhyg"
+        server: https://test.pypi.org/legacy/
+        skip_existing: true
+        on:
+          tags: true
+          #branch: master
