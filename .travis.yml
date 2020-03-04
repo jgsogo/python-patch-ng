@@ -4,17 +4,17 @@ stages:
     #if: branch = master
 
 language: python
-python:
-  - "2.7"
-  - "3.4"
-  - "3.5"
-  - "3.6"
-  - "3.7"
-  - "3.8"
 
 jobs:
   include:
     - stage: test
+      python:
+        - "2.7"
+        - "3.4"
+        - "3.5"
+        - "3.6"
+        - "3.7"
+        - "3.8"
       install:
         - pip install coverage
         - pip install pypack
