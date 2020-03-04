@@ -10,7 +10,7 @@ install:
 script:
   # run tests with coverage
   - coverage run tests/run_tests.py
-  - coverage report -m
+  - coverage report -m --omit=tests/run_tests.py
 
 jobs:
   include:
