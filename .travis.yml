@@ -1,7 +1,7 @@
 stages:
   - test
   - name: deploy
-    if: branch = master AND tag IS present
+    if: tag IS present
 
 language: python
 
@@ -40,4 +40,3 @@ jobs:
         server: https://test.pypi.org/legacy/
         on:
           tags: true
-          branch: master
