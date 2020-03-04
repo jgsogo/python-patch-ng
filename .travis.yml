@@ -28,7 +28,8 @@ jobs:
         - echo "Deploying library version '$PACKAGE_VERSION'"
         - echo "Tagged in repo as '$TRAVIS_TAG'"
         - |
-          if [[ "$PACKAGE_VERSION" -ne "$TRAVIS_TAG"]]; then 
+          if [[ "$PACKAGE_VERSION" -ne "$TRAVIS_TAG" ]]; then
+            echo "Library version and tag name mismatch!"
             travis_terminate 1
           fi
           
