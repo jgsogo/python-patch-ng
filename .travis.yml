@@ -4,25 +4,23 @@ stages:
     #if: branch = master
 
 language: python
-python:
-  - "2.7"
-  - "3.4"
-  - "3.5"
-  - "3.6"
-  - "3.7"
-  - "3.8"
+
+install:
+  - pip install coverage
+script:
+  # run tests with coverage
+  - coverage run tests/run_tests.py
+  - coverage report -m
 
 jobs:
   include:
     - stage: test
-      install:
-        - pip install coverage
-        - pip install pypack
-      script:
-        # run tests with coverage
-        - coverage run tests/run_tests.py
-        - coverage report -m
-
+      python: 2.7
+    - python: 3.4
+    - python: 3.5
+    - python: 3.6
+    - python: 3.7
+    - python: 3.8
     - stage: deploy
       python: 3.8
       install:
