@@ -14,18 +14,17 @@ script:
 
 jobs:
   include:
-    - stage: test
-      python: 2.7
-    - python: 3.4
-    - python: 3.5
-    - python: 3.6
-    - python: 3.7
-    - python: 3.8
+    #- stage: test
+    #  python: 2.7
+    #- python: 3.4
+    #- python: 3.5
+    #- python: 3.6
+    #- python: 3.7
+    #- python: 3.8
     - stage: deploy
-      python: 3.8
       install:
       script:
-        - "PACKAGE_VERSION=$(cat package.json | grep __version__ | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g')"
+        - "PACKAGE_VERSION=$(cat patch_ng.py | grep __version__ | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g')"
         - echo "Deploying version $PACKAGE_VERSION"
 
       deploy:
