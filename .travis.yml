@@ -8,7 +8,7 @@ language: python
 install:
   - pip install coverage
 script:
-  # run tests with coverage
+  # run tests and report coverage
   - coverage run tests/run_tests.py
   - coverage report -m --omit=tests/run_tests.py
 
