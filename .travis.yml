@@ -24,7 +24,9 @@ jobs:
     - stage: deploy
       python: 3.8
       install:
-      script: echo "This is deploy!"
+      script:
+        - PACKAGE_VERSION=$(cat package.json | grep __version__ | head -1 | awk -F: '{ print $2 }' | sed 's/[",]//g')
+        - echo "Deploying version $PACKAGE_VERSION"
 
       deploy:
         provider: pypi
