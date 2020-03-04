@@ -28,8 +28,8 @@ jobs:
         - echo "Deploying library version '$PACKAGE_VERSION'"
         - echo "Tagged in repo as '$TRAVIS_TAG'"
         - |
-          if [[ "$PACKAGE_VERSION" -ne "$TRAVIS_TAG"]]; then 
-            echo "Won't deploy a version that doesn't match the tag!"
+          if [ "$PACKAGE_VERSION" -ne "$TRAVIS_TAG"]; then 
+            travis_terminate 1
           fi
           
       deploy:
